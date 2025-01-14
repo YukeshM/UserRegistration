@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DatabaseService/.vs/DatabaseService
+/DatabaseService/bin/Debug/net8.0
+/DatabaseService/logs
+/DatabaseService/obj
+/DatabaseService.Model/bin/Debug/net8.0
+/DatabaseService.Model/obj
+/UserRegistrationService/.vs
+/UserRegistrationService/bin/Debug/net8.0
+/UserRegistrationService/logs
+/UserRegistrationService/obj
+/UserRegistrationService.Model/bin/Debug/net8.0
+/UserRegistrationService.Model/obj

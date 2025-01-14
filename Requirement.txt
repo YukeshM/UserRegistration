@@ -1,0 +1,65 @@
+
+Registration service
+	username
+	password
+	one document upload field(pdf, jpeg, jpg, png, xl, docx, txt, )
+	date field
+Database service
+Monitoring(the micro service performance), logging and error handelling
+responsive
+Unit test(Test cases that covered)
+Document
+Docker
+check the chosen time is save **
+add commented lines
+
+
+
+*************************
+extra added things:
+fluent validation
+error handling middleware
+error resources
+flat file log
+
+
+unit test role, admin and user
+
+
+
+localization
+flow diagram about the process
+comments for code and method implementation
+
+added admin and user role and check with madhn
+
+session?
+error resource introducing
+refresh token with jwt token??
+
+
+separated registration service and database service
+
+for accessing registration service we will be using the jwt
+what about database service?
+
+
+jwt created on db service? is it good?
+
+****************************
+
+
+
+
+13 Jan complete the 2 services
+14 Jan Complete the frontend with responsive and test the flow from frontend to backend
+15 Jan Unit test for frontend and backend
+16 Jan Monitoring and Docker
+17 Jan Document, request jeeva for review or any senior
+18 Jan Full testing in developed system and check in new system ie(rishi system), request yashwanth to check and give comments
+19 Jan check everything is completed against the document and send the mail.
+
+
+
+
+Scaffold-DbContext "server=LAPTOP-JLTFU1UJ;database=UserManagementDb;user id=sa;password=Yukesh@410;MultipleActiveResultSets=True;Trusted_connection=false;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context UserManagementDbContext 
