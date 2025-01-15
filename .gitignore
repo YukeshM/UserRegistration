@@ -14,3 +14,6 @@
 /UserRegistrationService/obj
 /UserRegistrationService.Model/bin/Debug/net8.0
 /UserRegistrationService.Model/obj
+/DatabaseService/.vs/ProjectEvaluation
+/user-registration/.vscode
+/user-registration/package-lock.json
