@@ -44,7 +44,8 @@ for accessing registration service we will be using the jwt
 what about database service?
 
 
-jwt created on db service? is it good?
+move validator, checck the exception handled by global middle ware
+
 
 ****************************
 

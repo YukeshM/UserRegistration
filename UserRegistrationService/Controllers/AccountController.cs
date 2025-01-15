@@ -1,5 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using UserRegistrationService.Model.Model;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using UserRegistrationService.Core.Models.ResultModels;
+using UserRegistrationService.Model.Contracts.Services;
+using UserRegistrationService.Model.Models.InputModels;
 
 namespace UserRegistrationService.Controllers
 {
@@ -8,59 +14,66 @@ namespace UserRegistrationService.Controllers
     [Route("api/account")]
     public class AccountController : ControllerBase
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IHttpClientFactory httpClientFactory)
+    public AccountController(IAccountService accountService)
+    {
+        _accountService = accountService;
+    }
+
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterModel model)
+    {
+        var response = await _accountService.RegisterAsync(model);
+
+        if (response.Success)
         {
-            _httpClientFactory = httpClientFactory;
+            return Ok(response); // Return success response with data
         }
-
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        else
         {
-            // Create client with a named client and set BaseAddress
-            var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:44303");  // Set the BaseAddress
-
-            // Now you can use relative URI
-            var response = await client.PostAsJsonAsync("/api/user/register", model);
-
-            if (response.IsSuccessStatusCode)
-            {
-                // Read the success message from the response content
-                var successMessage = await response.Content.ReadAsStringAsync();
-                return Ok(successMessage); // Return the success message
-            }
-            else
-            {
-                // Read the error message from the response content
-                var errorMessage = await response.Content.ReadAsStringAsync();
-                return BadRequest(errorMessage); // Return the error message
-            }
-
+            return BadRequest(response); // Return error response with message
         }
+    }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginModel model)
+    {
+        var response = await _accountService.LoginAsync(model);
+
+        if (response.Success)
         {
-            // Create client with BaseAddress set
-            var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:44303");  // Set the BaseAddress
+                var token = GenerateJwtToken(response);
+            return Ok(response); // Return success response with data
+        }
+        else
+        {
+            return Unauthorized(response); // Return error response with message
+        }
+    }
 
-            // Now you can use relative URI
-            var response = await client.PostAsJsonAsync("/api/user/authenticate", model);
 
-            if (response.IsSuccessStatusCode)
+        private string GenerateJwtToken(LoginResultModel user)
+        {
+            var claims = new[]
             {
-                // Read and return the success message from the response content
-                var successMessage = await response.Content.ReadAsStringAsync();
-                return Ok(successMessage);
-            }
+            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim("id", user.Id.ToString()),
+            new Claim("role", "user") // You can add any custom claims you need
+        };
 
-            // Read and return the error message if the authentication fails
-            var errorMessage = await response.Content.ReadAsStringAsync();
-            return Unauthorized(errorMessage);  // Return the error message as Unauthorized
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Value.PrivateKey));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            var token = new JwtSecurityToken(
+                issuer: _configuration.Value.Issuer,
+                audience: _configuration.Value.Audience,
+                claims: claims,
+                expires: DateTime.Now.AddHours(1), // You can set the expiration time
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

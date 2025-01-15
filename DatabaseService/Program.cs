@@ -1,11 +1,7 @@
-using DatabaseService.Context;
-using DatabaseService.Mapper;
+using DatabaseService.Core;
 using DatabaseService.Middleware;
 using DatabaseService.Model.Model;
-using DatabaseService.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -61,45 +57,37 @@ try
 
 
     #region customized services
+    // Register dependencies
+    builder.Services.AddApplicationServices(builder.Configuration);
 
-    builder.Services.AddDbContext<UserManagementDbContext>(opts =>
-        opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    ////to inject this service for controller
+    //builder.Services.Configure<JwtModel>(builder.Configuration.GetSection("Jwt"));
 
-    builder.Services.AddDbContext<CustomIdentityDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    ////for getting jwt properties
+    //var issuer = builder.Configuration.GetSection("Jwt").GetSection("Issuer");
+    //var audience = builder.Configuration.GetSection("Jwt").GetSection("Audience");
+    //var privateKey = builder.Configuration.GetSection("Jwt").GetSection("PrivateKey");
 
-    builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-        .AddEntityFrameworkStores<CustomIdentityDbContext>()
-        .AddDefaultTokenProviders();
+    ////jwt token
+    //builder.Services.AddAuthentication(opt =>
+    //{
+    //    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    //    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    //    opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 
-    //to inject this service for controller
-    builder.Services.Configure<JwtModel>(builder.Configuration.GetSection("Jwt"));
-
-    //for getting jwt properties
-    var issuer = builder.Configuration.GetSection("Jwt").GetSection("Issuer");
-    var audience = builder.Configuration.GetSection("Jwt").GetSection("Audience");
-    var privateKey = builder.Configuration.GetSection("Jwt").GetSection("PrivateKey");
-
-    //jwt token
-    builder.Services.AddAuthentication(opt =>
-    {
-        opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-
-    }).AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = issuer.Value,
-            ValidAudience = audience.Value,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(privateKey.Value))
-        };
-    });
+    //}).AddJwtBearer(options =>
+    //{
+    //    options.TokenValidationParameters = new TokenValidationParameters
+    //    {
+    //        ValidateIssuer = true,
+    //        ValidateAudience = true,
+    //        ValidateLifetime = true,
+    //        ValidateIssuerSigningKey = true,
+    //        ValidIssuer = issuer.Value,
+    //        ValidAudience = audience.Value,
+    //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(privateKey.Value))
+    //    };
+    //});
 
 
     //cors

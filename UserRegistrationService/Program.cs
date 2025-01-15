@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using Serilog;
 using UserRegistrationService.Middleware;
+using UserRegistrationService.Model;
 using UserRegistrationService.Validator;
 
 Log.Logger = new LoggerConfiguration()
@@ -19,8 +20,10 @@ try
     builder.Services.AddControllers()
         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RegisterModelValidator>());
 
-    builder.Services.AddHttpClient();
+    #region customized services
+    builder.Services.AddApplicationServices(builder.Configuration);
 
+    #endregion customized services
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
