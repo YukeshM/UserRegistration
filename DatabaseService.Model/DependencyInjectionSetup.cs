@@ -1,6 +1,7 @@
 ﻿using DatabaseService.Core.Contracts.Services;
 using DatabaseService.Core.DataAccess;
 using DatabaseService.Core.DataAccess.IdentityMapper;
+using DatabaseService.Core.Mapper;
 using DatabaseService.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,8 @@ namespace DatabaseService.Core
 
             // Add other services here
             // services.AddHttpClient(), services.AddScoped<MyService>(), etc.
+
+            services.AddScoped<UserMapper>();
 
             return services;
         }

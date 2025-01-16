@@ -1,12 +1,11 @@
 ﻿using DatabaseService.Core.Contracts.Services;
 using DatabaseService.Core.DataAccess.IdentityMapper;
+using DatabaseService.Core.Mapper;
 using DatabaseService.Core.Models.InputModels;
 using DatabaseService.Core.Models.ResultModels;
-using DatabaseService.Model.Model;
 using Microsoft.AspNetCore.Identity;
 
 //using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 
 namespace DatabaseService.Core.Services
 {
@@ -14,17 +13,19 @@ namespace DatabaseService.Core.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserMapper _userMapper;
 
         public UserService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            IOptions<JwtModel> configuration)
+            UserMapper userMapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userMapper = userMapper;
         }
 
-        public async Task<ServiceResponse<string>> Register(RegisterModel model)
+        public async Task<ServiceResponse<string>> Register(RegisterInput model)
         {
             // Check if email already exists
             var existingUserByEmail = await _userManager.FindByEmailAsync(model.Email);
@@ -59,7 +60,7 @@ namespace DatabaseService.Core.Services
             return ServiceResponse<string>.ErrorResponse("Registration failed", result.Errors.FirstOrDefault()?.Description);
         }
 
-        public async Task<ServiceResponse<object>> Authenticate(LoginModel model)
+        public async Task<LoginResult> Authenticate(LoginInput model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null)
@@ -68,20 +69,13 @@ namespace DatabaseService.Core.Services
 
                 if (result.Succeeded)
                 {
-                    //var token = GenerateJwtToken(user);
-                    return ServiceResponse<object>.SuccessResponse(new
-                    {
-                        //token,
-                        username = user.UserName,
-                        id = user.Id,
-                        email = user.Email,
-                    }, "Authentication successful");
+                    return _userMapper.Map(user);
                 }
 
-                return ServiceResponse<object>.ErrorResponse("Invalid credentials");
+                throw new Exception();
             }
 
-            return ServiceResponse<object>.ErrorResponse("Invalid credentials");
+            throw new Exception();
         }
     }
 }

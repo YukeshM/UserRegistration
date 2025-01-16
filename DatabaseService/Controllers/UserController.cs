@@ -17,7 +17,7 @@ namespace DatabaseService.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterInput model)
         {
             var response = await _userService.Register(model);
 
@@ -30,16 +30,10 @@ namespace DatabaseService.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] LoginModel model)
+        public async Task<IActionResult> Authenticate([FromBody] LoginInput model)
         {
             var response = await _userService.Authenticate(model);
-
-            if (response.Success)
-            {
-                return Ok(response);
-            }
-
-            return Unauthorized(response);
+            return Ok(response);
         }
     }
 }

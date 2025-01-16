@@ -3,7 +3,7 @@ using UserRegistrationService.Model.Models.InputModels;
 
 namespace UserRegistrationService.Validator
 {
-    public class RegisterModelValidator : AbstractValidator<RegisterModel>
+    public class RegisterModelValidator : AbstractValidator<RegisterInput>
     {
         public RegisterModelValidator()
         {

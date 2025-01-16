@@ -1,6 +1,6 @@
 ﻿namespace DatabaseService.Core.Models.InputModels
 {
-    public class RegisterModel
+    public class RegisterInput
     {
         public string Username { get; set; }
         public string LastName { get; set; }

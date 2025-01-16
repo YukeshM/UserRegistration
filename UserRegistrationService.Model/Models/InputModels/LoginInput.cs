@@ -1,6 +1,6 @@
-﻿namespace DatabaseService.Core.Models.InputModels
+﻿namespace UserRegistrationService.Model.Models.InputModels
 {
-    public class LoginModel
+    public class LoginInput
     {
         public string Email { get; set; }
         public string Password { get; set; }

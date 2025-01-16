@@ -1,6 +1,6 @@
 ﻿namespace UserRegistrationService.Model.Models.InputModels
 {
-    public class RegisterModel
+    public class RegisterInput
     {
         public string Username { get; set; }
         public string LastName { get; set; }

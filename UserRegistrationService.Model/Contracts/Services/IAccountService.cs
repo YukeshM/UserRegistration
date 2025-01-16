@@ -5,7 +5,7 @@ namespace UserRegistrationService.Model.Contracts.Services
 {
     public interface IAccountService
     {
-        Task<ServiceResponse<string>> RegisterAsync(RegisterModel model);
-        Task<LoginResultModel> LoginAsync(LoginModel model);
+        Task<ServiceResponse<string>> RegisterAsync(RegisterInput model);
+        Task<LoginResult> LoginAsync(LoginInput model);
     }
 }

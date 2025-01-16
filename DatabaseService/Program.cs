@@ -1,11 +1,8 @@
 using DatabaseService.Core;
 using DatabaseService.Middleware;
-using DatabaseService.Model.Model;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using System.Text;
 
 
 Log.Logger = new LoggerConfiguration()
@@ -59,36 +56,6 @@ try
     #region customized services
     // Register dependencies
     builder.Services.AddApplicationServices(builder.Configuration);
-
-    ////to inject this service for controller
-    //builder.Services.Configure<JwtModel>(builder.Configuration.GetSection("Jwt"));
-
-    ////for getting jwt properties
-    //var issuer = builder.Configuration.GetSection("Jwt").GetSection("Issuer");
-    //var audience = builder.Configuration.GetSection("Jwt").GetSection("Audience");
-    //var privateKey = builder.Configuration.GetSection("Jwt").GetSection("PrivateKey");
-
-    ////jwt token
-    //builder.Services.AddAuthentication(opt =>
-    //{
-    //    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    //    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    //    opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-
-    //}).AddJwtBearer(options =>
-    //{
-    //    options.TokenValidationParameters = new TokenValidationParameters
-    //    {
-    //        ValidateIssuer = true,
-    //        ValidateAudience = true,
-    //        ValidateLifetime = true,
-    //        ValidateIssuerSigningKey = true,
-    //        ValidIssuer = issuer.Value,
-    //        ValidAudience = audience.Value,
-    //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(privateKey.Value))
-    //    };
-    //});
-
 
     //cors
     builder.Services.AddCors(options =>

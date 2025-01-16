@@ -6,7 +6,7 @@ namespace DatabaseService.Core.Contracts.Services
 {
     public interface IUserService
     {
-        Task<ServiceResponse<string>> Register(RegisterModel model);
-        Task<ServiceResponse<object>> Authenticate(LoginModel model);
+        Task<ServiceResponse<string>> Register(RegisterInput model);
+        Task<LoginResult> Authenticate(LoginInput model);
     }
 }

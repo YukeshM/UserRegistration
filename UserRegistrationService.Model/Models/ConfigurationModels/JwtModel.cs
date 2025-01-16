@@ -1,4 +1,4 @@
-﻿namespace DatabaseService.Model.Model
+﻿namespace UserRegistrationService.Core.Models.ConfigurationModels
 {
     public class JwtModel
     {
