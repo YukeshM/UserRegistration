@@ -1,8 +1,6 @@
-using FluentValidation.AspNetCore;
 using Serilog;
 using UserRegistrationService.Middleware;
 using UserRegistrationService.Model;
-using UserRegistrationService.Validator;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console() // Logs to the console
@@ -14,11 +12,6 @@ try
 {
     Log.Information("Application Starting");
     var builder = WebApplication.CreateBuilder(args);
-
-    // Add services to the container.
-
-    builder.Services.AddControllers()
-        .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RegisterModelValidator>());
 
     #region customized services
     builder.Services.AddApplicationServices(builder.Configuration);
@@ -39,6 +32,8 @@ try
     }
 
     app.UseMiddleware<ErrorHandlingMiddleware>();
+
+    app.UseCors("AllowLocalhost");
 
     app.UseHttpsRedirection();
 

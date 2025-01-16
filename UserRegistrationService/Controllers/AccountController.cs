@@ -1,76 +1,49 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using UserRegistrationService.Core.Models.ConfigurationModels;
 using UserRegistrationService.Core.Models.ResultModels;
 using UserRegistrationService.Model.Contracts.Services;
 using UserRegistrationService.Model.Models.InputModels;
 
 namespace UserRegistrationService.Controllers
 {
-
     [ApiController]
     [Route("api/account")]
-    public class AccountController : ControllerBase
+    public class AccountController(IAccountService accountService) : ControllerBase
     {
-        private readonly IAccountService _accountService;
-        private readonly IOptions<JwtModel> _jwt;
 
-        public AccountController(IAccountService accountService, IOptions<JwtModel> jwt)
+        /// <summary>
+        /// Registers a new user. 
+        /// On success, returns a success message; on failure, returns an appropriate error message.
+        /// </summary>
+        /// <param name="registerModel">The model containing user registration details.</param>
+        /// <returns>A response indicating success or failure of the registration process.</returns>
+        [HttpPost("register")]
+        public async Task<ActionResult> Register([FromBody] RegisterInput registerModel)
         {
-            _accountService = accountService;
-            _jwt = jwt;
-        }
+            var response = await accountService.RegisterAsync(registerModel);
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterInput model)
-    {
-        var response = await _accountService.RegisterAsync(model);
-
-        if (response.Success)
-        {
-            return Ok(response); // Return success response with data
-        }
-        else
-        {
-            return BadRequest(response); // Return error response with message
-        }
-    }
-
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginInput model)
-    {
-        var response = await _accountService.LoginAsync(model);
-
-        var token = GenerateJwtToken(response);
-        return Ok(response); // Return success response with data
-    }
-
-
-        private string GenerateJwtToken(LoginResult user)
-        {
-            var claims = new[]
+            if (response.Success)
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim("id", user.Id.ToString()),
-            new Claim("role", "user") // You can add any custom claims you need
-        };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Value.PrivateKey));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _jwt.Value.Issuer,
-                audience: _jwt.Value.Audience,
-                claims: claims,
-                expires: DateTime.Now.AddHours(1), // You can set the expiration time
-                signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                return Ok(response);
+            }
+            else
+            {
+                return BadRequest(response);
+            }
         }
+
+        /// <summary>
+        /// Authenticates the user and generates a JWT token on successful login. 
+        /// On failure, returns an appropriate error message.
+        /// </summary>
+        /// <param name="loginModel">The model containing user login details (email and password).</param>
+        /// <returns>A response with the JWT token on success or an error message on failure.</returns>
+        [HttpPost("login")]
+        public async Task<ActionResult<ServiceResponse<string>>> Login([FromBody] LoginInput loginModel)
+        {
+            var response = await accountService.LoginAsync(loginModel);
+
+            return ServiceResponse<string>.SuccessResponse(response, "Log in success"); 
+        }
+
     }
 }

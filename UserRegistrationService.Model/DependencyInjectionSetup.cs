@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 using UserRegistrationService.Core.Mapper;
 using UserRegistrationService.Core.Models.ConfigurationModels;
+using UserRegistrationService.Core.Validator;
 using UserRegistrationService.Model.Contracts.Services;
 using UserRegistrationService.Model.Service;
 
@@ -16,6 +20,26 @@ namespace UserRegistrationService.Model
         {
             // Add services
             services.AddScoped<IAccountService, AccountService>();
+
+            // Register FluentValidation
+            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddFluentValidationAutoValidation();
+            services.AddFluentValidationClientsideAdapters();
+
+            //services.AddFluentValidationAutoValidation()
+            //        .AddFluentValidationClientsideAdapters();
+
+            //services.AddValidatorsFromAssemblyContaining<RegisterModelValidator>();
+            //services.AddValidatorsFromAssemblyContaining<LoginModelValidator>();
+
+
+            //services.AddControllers()
+            //    .AddFluentValidation(fv =>
+            //    {
+            //        fv.RegisterValidatorsFromAssemblyContaining<RegisterModelValidator>();
+            //        fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>();
+            //    });
 
             //to inject this service for controller
             services.Configure<JwtModel>(configuration.GetSection("Jwt"));
@@ -46,6 +70,21 @@ namespace UserRegistrationService.Model
                 };
             });
 
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                    //builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
+
+            services.AddAuthorization();
+
+            services.AddControllers();
 
             services.AddScoped<AccountMapper>();
 
