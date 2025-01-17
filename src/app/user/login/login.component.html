@@ -1,0 +1,50 @@
+<div class="auth-container">
+  <div class="auth-card login-card">
+    <h1>Login</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <!-- Email Field -->
+      <div class="form-group">
+        <input
+        [autocomplete]="false"
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          [ngClass]="{ 'is-invalid': form['email'].touched && form['email'].invalid }"
+        />
+        <div *ngIf="form['email'].touched && form['email'].errors" class="error">
+          <small *ngIf="form['email'].errors['required']">Email is required.</small>
+          <small *ngIf="form['email'].errors['email']">Invalid email address.</small>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <input
+
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          [ngClass]="{ 'is-invalid': form['password'].touched && form['password'].invalid }"
+        />
+        <div *ngIf="form['password'].touched && form['password'].errors" class="error">
+          <small *ngIf="form['password'].errors['required']">
+            Password is required.
+          </small>
+          <small *ngIf="form['password'].errors['minlength']">
+            Password must be at least 8 characters long.
+          </small>
+          <small *ngIf="form['password'].errors['pattern']">
+            Password must contain an uppercase letter, a lowercase letter, and a
+            number.
+          </small>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="auth-button" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

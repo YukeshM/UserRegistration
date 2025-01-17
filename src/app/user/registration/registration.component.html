@@ -1,0 +1,39 @@
+
+
+<!-- register.component.html -->
+<div class="auth-container">
+  <div class="auth-card register-card">
+    <h1>Create Account</h1>
+    
+    <div class="social-auth">
+      <button class="social-button facebook">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+      <button class="social-button google">
+        <i class="fab fa-google"></i>
+      </button>
+      <button class="social-button linkedin">
+        <i class="fab fa-linkedin-in"></i>
+      </button>
+    </div>
+    
+    <p class="divider">or use your email for registration:</p>
+    
+    <form class="auth-form" (ngSubmit)="onRegister()">
+      <div class="form-group">
+        <input type="text" placeholder="Name" [(ngModel)]="registerData.name" name="name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email" [(ngModel)]="registerData.email" name="email" required>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" [(ngModel)]="registerData.password" name="password" required>
+      </div>
+      <button type="submit" class="auth-button">SIGN UP</button>
+    </form>
+    
+    <p class="switch-auth">
+      Already have an account? <a routerLink="/login">Sign In</a>
+    </p>
+  </div>
+</div>
