@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../service/auth.service'; // Make sure the path is correct
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -10,16 +10,29 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, MatSnackBarModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    MatSnackBarModule,
+    RouterModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  hidePassword = true;
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +41,13 @@ export class LoginComponent {
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]], // Add email validator
+      email: ['', [Validators.required, Validators.email]],
       password: [
         '',
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]/), // At least one uppercase, one lowercase, and one number
+          Validators.pattern(/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]/),
         ],
       ],
     });
@@ -57,21 +70,20 @@ export class LoginComponent {
 
     this.authService.login(credentials).subscribe({
       next: (response: any) => {
-
         console.log(response);
 
-        if(response.success && response.data != "" && response.data) {
+        if (response.success && response.data != '' && response.data) {
           this.authService.storeToken(response.data);
 
-        // Show success message using Snackbar
-        this.snackBar.open('Login successful! Redirecting...', 'Close', {
-          duration: 3000,
-          panelClass: ['success-snackbar'],
-        });
+          // Show success message using Snackbar
+          this.snackBar.open('Login successful! Redirecting...', 'Close', {
+            duration: 3000,
+            panelClass: ['success-snackbar'],
+          });
 
-        // Navigate to home page after successful login
-        this.router.navigate(['/home']);
-        }else{
+          // Navigate to home page after successful login
+          this.router.navigate(['/home']);
+        } else {
           this.snackBar.open(
             'Login failed. Please check your credentials and try again.',
             'Close',
@@ -81,7 +93,6 @@ export class LoginComponent {
             }
           );
         }
-        
       },
       error: (error) => {
         // Handle error and show error message
@@ -95,5 +106,9 @@ export class LoginComponent {
         );
       },
     });
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 }
