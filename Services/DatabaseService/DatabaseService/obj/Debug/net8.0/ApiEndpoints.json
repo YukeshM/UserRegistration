@@ -1,0 +1,50 @@
+[
+  {
+    "ContainingType": "DatabaseService.Controllers.UserController",
+    "Method": "Authenticate",
+    "RelativePath": "api/user/authenticate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DatabaseService.Core.Models.InputModels.LoginInput",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DatabaseService.Controllers.UserController",
+    "Method": "Register",
+    "RelativePath": "api/user/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DatabaseService.Core.Models.InputModels.RegisterInput",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DatabaseService.Controllers.UserController",
+    "Method": "UserAlreadyRegister",
+    "RelativePath": "api/user/userAlreadyRegister",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DatabaseService.Core.Models.InputModels.ExistingRegisterInput",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

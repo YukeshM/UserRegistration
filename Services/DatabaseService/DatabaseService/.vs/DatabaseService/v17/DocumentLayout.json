@@ -1,0 +1,564 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\contracts\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\models\\inputmodels\\existingregisterinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\models\\resultmodels\\serviceresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\models\\inputmodels\\registerinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\models\\inputmodels\\logininput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\usermanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice\\middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|solutionrelative:middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\models\\resultmodels\\loginresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dependencyinjectionsetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\databaseservice.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice\\databaseservice.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}|DatabaseService.Api.csproj|solutionrelative:databaseservice.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\customidentitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationroleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\identitymapper\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\usertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\userlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\userclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\roleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5EFD6D3-96E2-4DFA-B604-329730285690}|..\\DatabaseService.Model\\DatabaseService.Core.csproj|e:\\yukesh\\interview\\tetherfi_assignment\\databaseservice.model\\dataaccess\\domain\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 198,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{67d15d2e-5bac-311f-82c3-d49feab601fd}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Document.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Document.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\Document.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Document.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\Document.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:10:26.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RegisterInput.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\RegisterInput.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Models\\InputModels\\RegisterInput.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\RegisterInput.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Models\\InputModels\\RegisterInput.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T12:53:47.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Services\\UserService.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Services\\UserService.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Services\\UserService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA1wCYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:46:27.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserManagementDbContext.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\UserManagementDbContext.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\UserManagementDbContext.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\UserManagementDbContext.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\UserManagementDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBAAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T17:10:02.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Contracts\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Contracts\\Services\\IUserService.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Contracts\\Services\\IUserService.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Contracts\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:39:24.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T12:46:57.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserMapper.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Mapper\\UserMapper.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Mapper\\UserMapper.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Mapper\\UserMapper.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Mapper\\UserMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T02:14:12.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUser.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUser.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:16:33.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DependencyInjectionSetup.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DependencyInjectionSetup.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DependencyInjectionSetup.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DependencyInjectionSetup.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DependencyInjectionSetup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T17:02:55.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServiceResponse.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\ResultModels\\ServiceResponse.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Models\\ResultModels\\ServiceResponse.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\ResultModels\\ServiceResponse.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Models\\ResultModels\\ServiceResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:57:36.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ExistingRegisterInput.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\ExistingRegisterInput.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Models\\InputModels\\ExistingRegisterInput.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\ExistingRegisterInput.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Models\\InputModels\\ExistingRegisterInput.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-17T17:31:19.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginInput.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\LoginInput.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Models\\InputModels\\LoginInput.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\InputModels\\LoginInput.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Models\\InputModels\\LoginInput.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T12:54:15.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ErrorHandlingMiddleware.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\ErrorHandlingMiddleware.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeToolTip": "Middleware\\ErrorHandlingMiddleware.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAvwBgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T16:00:40.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-14T09:56:32.088Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoginResult.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\ResultModels\\LoginResult.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\Models\\ResultModels\\LoginResult.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\Models\\ResultModels\\LoginResult.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\Models\\ResultModels\\LoginResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-16T02:03:04.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DatabaseService.Api.csproj",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\DatabaseService.Api.csproj",
+              "RelativeDocumentMoniker": "DatabaseService.Api.csproj",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\DatabaseService.Api.csproj",
+              "RelativeToolTip": "DatabaseService.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-14T09:31:33.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DatabaseService.Core.csproj",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DatabaseService.Core.csproj",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DatabaseService.Core.csproj",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DatabaseService.Core.csproj",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DatabaseService.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-01-15T15:35:05.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T09:45:25.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CustomIdentityDbContext.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\CustomIdentityDbContext.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\CustomIdentityDbContext.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\CustomIdentityDbContext.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\CustomIdentityDbContext.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAIBJwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T17:14:11.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ApplicationUserToken.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserToken.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserToken.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserToken.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserToken.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAIBJwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:17:29.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ApplicationUserRole.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserRole.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserRole.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserRole.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:17:17.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ApplicationUserLogin.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserLogin.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserLogin.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserLogin.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:16:50.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ApplicationUserClaim.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserClaim.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserClaim.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserClaim.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationUserClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:16:41.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ApplicationRoleClaim.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRoleClaim.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRoleClaim.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRoleClaim.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRoleClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:16:25.316Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRole.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRole.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\IdentityMapper\\ApplicationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:15:50.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "UserToken.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserToken.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserToken.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserToken.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:14:36.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserRole.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserRole.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserRole.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:14:12.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UserLogin.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserLogin.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserLogin.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserLogin.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:14:03.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UserClaim.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserClaim.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserClaim.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\UserClaim.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\UserClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:13:53.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\User.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\User.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\User.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:13:44.555Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "RoleClaim.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\RoleClaim.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\RoleClaim.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\RoleClaim.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\RoleClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:13:37.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Role.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Role.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\Role.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Role.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:13:14.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Gender.cs",
+              "RelativeDocumentMoniker": "..\\DatabaseService.Model\\DataAccess\\Domain\\Gender.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService.Model\\DataAccess\\Domain\\Gender.cs",
+              "RelativeToolTip": "..\\DatabaseService.Model\\DataAccess\\Domain\\Gender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T16:13:06.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": ".NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "DocumentMoniker": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "RelativeDocumentMoniker": "obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "ToolTip": "E:\\yukesh\\interview\\tetherfi_assignment\\DatabaseService\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "RelativeToolTip": "obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-14T09:30:36.262Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

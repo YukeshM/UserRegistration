@@ -1,0 +1,13 @@
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.csproj.AssemblyReference.cache
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.AssemblyInfoInputs.cache
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.AssemblyInfo.cs
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.csproj.CoreCompileInputs.cache
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.sourcelink.json
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\bin\Debug\net8.0\UserRegistrationService.Core.deps.json
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\bin\Debug\net8.0\UserRegistrationService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\bin\Debug\net8.0\UserRegistrationService.Core.pdb
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\refint\UserRegistrationService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\UserRegistrationService.Core.pdb
+E:\yukesh\interview\tetherfi_assignment\UserRegistrationService.Model\obj\Debug\net8.0\ref\UserRegistrationService.Core.dll

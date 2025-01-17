@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "6I4Mfo6D8fZRKp7p5JtkOxQfKlZId5p+wDbWYGDPals=",
+  "Source": "UserRegistrationService.Api",
+  "BasePath": "_content/UserRegistrationService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

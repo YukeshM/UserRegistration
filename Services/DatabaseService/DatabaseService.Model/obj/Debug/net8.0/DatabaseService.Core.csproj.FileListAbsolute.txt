@@ -1,0 +1,13 @@
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.csproj.AssemblyReference.cache
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.AssemblyInfoInputs.cache
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.AssemblyInfo.cs
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.csproj.CoreCompileInputs.cache
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.sourcelink.json
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\bin\Debug\net8.0\DatabaseService.Core.deps.json
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\bin\Debug\net8.0\DatabaseService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\bin\Debug\net8.0\DatabaseService.Core.pdb
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\refint\DatabaseService.Core.dll
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\DatabaseService.Core.pdb
+E:\yukesh\interview\tetherfi_assignment\DatabaseService.Model\obj\Debug\net8.0\ref\DatabaseService.Core.dll
