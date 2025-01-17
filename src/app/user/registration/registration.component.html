@@ -83,7 +83,9 @@
             type="button"
             aria-label="Toggle password visibility"
           >
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
           </button>
           <mat-error
             *ngIf="form['password']?.touched && form['password']?.invalid"
@@ -95,12 +97,12 @@
               Password must be at least 6 characters long.
             </span>
             <span *ngIf="form['password']?.errors?.['pattern']">
-              Password must include at least one uppercase letter, one lowercase letter, one number, and one special character.
+              Password must include at least one uppercase letter, one lowercase
+              letter, one number, and one special character.
             </span>
           </mat-error>
         </mat-form-field>
       </div>
-      
 
       <!-- Date Picker -->
       <div class="form-group">
@@ -131,6 +133,13 @@
 
       <!-- Document Upload -->
       <!-- <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Upload Document</mat-label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </mat-form-field>
+      </div> -->
+
+      <div class="form-group">
         <label for="document" class="mat-label">Upload Document</label>
         <input
           type="file"
@@ -138,13 +147,14 @@
           (change)="onFileSelected($event)"
           class="file-input"
           required
+          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx,.csv"
         />
         <mat-error
           *ngIf="form['document']?.touched && form['document']?.invalid"
         >
           Document upload is required.
         </mat-error>
-      </div> -->
+      </div>
 
       <!-- Submit Button -->
       <button

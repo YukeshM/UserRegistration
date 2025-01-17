@@ -14,7 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
@@ -29,6 +30,7 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     RouterModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
@@ -40,7 +42,8 @@ export class RegistrationComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.registerForm = this.fb.group({
       userName: ['', Validators.required],
@@ -51,7 +54,9 @@ export class RegistrationComponent {
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{6,}$/),
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{6,}$/
+          ),
         ],
       ],
       registrationDate: ['', Validators.required],
@@ -73,7 +78,7 @@ export class RegistrationComponent {
 
     // Call the auth service to register the user
     this.authService.register(formData).subscribe({
-      next: (response) => {
+      next: (response : any) => {
         console.log('Registration successful:', response);
         this.router.navigate(['/login']);
       },
@@ -85,9 +90,15 @@ export class RegistrationComponent {
   }
 
   // File upload handler
-  onFileSelected(event: Event): void {
+  onFileSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
+      if (file.size > 10 * 1024 * 1024) {
+        this.snackBar.open('File size should not exceed 10MB.', 'Close', {
+          duration: 3000,
+        });
+        return;
+      }
       this.registerForm.patchValue({ document: file });
       console.log('File selected:', file.name);
     }
