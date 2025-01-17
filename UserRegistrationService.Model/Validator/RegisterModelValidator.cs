@@ -1,10 +1,19 @@
 ﻿using FluentValidation;
-using UserRegistrationService.Model.Models.InputModels;
+using Microsoft.AspNetCore.Http;
+using UserRegistrationService.Core.Models.InputModels;
 
 namespace UserRegistrationService.Core.Validator
 {
     public class RegisterModelValidator : AbstractValidator<RegisterInput>
     {
+
+        private readonly string[] _allowedExtensions =
+        {
+            ".pdf", ".doc", ".docx",
+            ".jpg", ".jpeg", ".png",
+            ".xls", ".xlsx", ".csv"
+        };
+
         public RegisterModelValidator()
         {
             RuleFor(x => x.Username)
@@ -28,6 +37,25 @@ namespace UserRegistrationService.Core.Validator
             .NotEmpty().WithMessage("Last name is required")
             .Length(1, 50).WithMessage("Last name must be between 1 and 50 characters")
             .Matches("^[a-zA-Z ]*$").WithMessage("Last name can only contain letters and spaces");
+
+            RuleFor(file => file.Document)
+            .NotNull().WithMessage("File is required.")
+            .Must(IsValidFileType).WithMessage("Unsupported file type. Allowed types are: .pdf, .doc, .docx, .jpg, .jpeg, .png, .xls, .xlsx, .csv.")
+            .Must(IsValidFileSize).WithMessage("File size must not exceed 10 MB.");
+        }
+
+
+        private bool IsValidFileType(IFormFile file)
+        {
+            if (file == null) return false;
+            var fileExtension = Path.GetExtension(file.FileName)?.ToLowerInvariant();
+            return _allowedExtensions.Contains(fileExtension);
+        }
+
+        private bool IsValidFileSize(IFormFile file)
+        {
+            const long maxFileSize = 10 * 1024 * 1024; // 10 MB
+            return file?.Length <= maxFileSize;
         }
     }
 }

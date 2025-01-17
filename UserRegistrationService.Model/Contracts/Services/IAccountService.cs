@@ -1,5 +1,5 @@
-﻿using UserRegistrationService.Core.Models.ResultModels;
-using UserRegistrationService.Model.Models.InputModels;
+﻿using UserRegistrationService.Core.Models.InputModels;
+using UserRegistrationService.Core.Models.ResultModels;
 
 namespace UserRegistrationService.Model.Contracts.Services
 {

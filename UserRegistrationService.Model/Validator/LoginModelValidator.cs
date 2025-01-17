@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using UserRegistrationService.Model.Models.InputModels;
+using UserRegistrationService.Core.Models.InputModels;
 
 namespace UserRegistrationService.Core.Validator
 {

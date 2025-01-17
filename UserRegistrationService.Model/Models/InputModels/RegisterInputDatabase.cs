@@ -1,6 +1,6 @@
-﻿namespace DatabaseService.Core.Models.InputModels
+﻿namespace UserRegistrationService.Core.Models.InputModels
 {
-    public class RegisterInput
+    public class RegisterInputDatabase
     {
         public string Username { get; set; }
         public string LastName { get; set; }
@@ -10,5 +10,6 @@
         public string FileName { get; set; } = null!;
         public string OriginalFileName { get; set; } = null!;
         public int? DocumentVersion { get; set; }
+
     }
 }

@@ -7,19 +7,12 @@ namespace DatabaseService.Controllers
 
     [ApiController]
     [Route("api/user")]
-    public class UserController : ControllerBase
+    public class UserController(IUserService userService) : ControllerBase
     {
-        private readonly IUserService _userService;
-
-        public UserController(IUserService userService)
-        {
-            _userService = userService;
-        }
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterInput model)
         {
-            var response = await _userService.Register(model);
+            var response = await userService.Register(model);
 
             if (response.Success)
             {
@@ -32,8 +25,21 @@ namespace DatabaseService.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] LoginInput model)
         {
-            var response = await _userService.Authenticate(model);
+            var response = await userService.Authenticate(model);
             return Ok(response);
+        }
+
+        [HttpPost("userAlreadyRegister")]
+        public async Task<IActionResult> UserAlreadyRegister([FromBody] ExistingRegisterInput model)
+        {
+            var response = await userService.UserAlreadyRegistered(model);
+
+            if (response.Success)
+            {
+                return Ok(response);
+            }
+
+            return BadRequest(response);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UserRegistrationService.Core.Models.InputModels;
 using UserRegistrationService.Core.Models.ResultModels;
 using UserRegistrationService.Model.Contracts.Services;
-using UserRegistrationService.Model.Models.InputModels;
 
-namespace UserRegistrationService.Controllers
+namespace UserRegistrationService.Core.Controllers
 {
     [ApiController]
     [Route("api/account")]
@@ -17,7 +17,7 @@ namespace UserRegistrationService.Controllers
         /// <param name="registerModel">The model containing user registration details.</param>
         /// <returns>A response indicating success or failure of the registration process.</returns>
         [HttpPost("register")]
-        public async Task<ActionResult> Register([FromBody] RegisterInput registerModel)
+        public async Task<ActionResult> Register([FromForm] RegisterInput registerModel)
         {
             var response = await accountService.RegisterAsync(registerModel);
 
