@@ -1,5 +1,5 @@
+using DatabaseService.Api.Middleware;
 using DatabaseService.Core;
-using DatabaseService.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -19,8 +19,10 @@ try
     // Add services to the container.
 
     builder.Services.AddControllers();
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
+
     builder.Services.AddSwaggerGen(c =>
     {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Portfolio", Version = "v1" });
@@ -56,20 +58,6 @@ try
     #region customized services
     // Register dependencies
     builder.Services.AddApplicationServices(builder.Configuration);
-
-    //cors
-    builder.Services.AddCors(options =>
-    {
-        options.AddDefaultPolicy(builder =>
-        {
-            //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-
-            //builder.WithOrigins("https://chadtrader.in") // Angular app URL
-            builder.AllowAnyOrigin()
-                 .AllowAnyMethod()
-                 .AllowAnyHeader();
-        });
-    });
 
     #endregion
 

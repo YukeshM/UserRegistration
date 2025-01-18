@@ -5,10 +5,6 @@ namespace DatabaseService.Core.DataAccess;
 
 public partial class UserManagementDbContext : DbContext
 {
-    //public UserManagementDbContext()
-    //{
-    //}
-
     public UserManagementDbContext(DbContextOptions<UserManagementDbContext> options)
         : base(options)
     {

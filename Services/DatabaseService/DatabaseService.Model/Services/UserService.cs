@@ -7,8 +7,6 @@ using DatabaseService.Core.Models.ResultModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-//using Microsoft.AspNetCore.Identity;
-
 namespace DatabaseService.Core.Services
 {
     public class UserService(

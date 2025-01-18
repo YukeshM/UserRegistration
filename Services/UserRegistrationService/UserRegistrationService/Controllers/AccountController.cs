@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Models.InputModels;
 using UserRegistrationService.Core.Models.ResultModels;
-using UserRegistrationService.Model.Contracts.Services;
 
-namespace UserRegistrationService.Core.Controllers
+namespace UserRegistrationService.Api.Controllers
 {
     [ApiController]
     [Route("api/account")]
@@ -42,7 +42,7 @@ namespace UserRegistrationService.Core.Controllers
         {
             var response = await accountService.LoginAsync(loginModel);
 
-            return ServiceResponse<string>.SuccessResponse(response, "Log in success"); 
+            return ServiceResponse<string>.SuccessResponse(response, "Log in success");
         }
 
     }

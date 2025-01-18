@@ -2,23 +2,16 @@
 using System.Net;
 using System.Text.Json;
 
-namespace UserRegistrationService.Middleware
+namespace UserRegistrationService.Api.Middleware
 {
 
-    public class ErrorHandlingMiddleware
+    public class ErrorHandlingMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate _next;
-
-        public ErrorHandlingMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                await _next(context);
+                await next(context);
             }
             catch (Exception ex)
             {

@@ -14,6 +14,8 @@ namespace DatabaseService.Core
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddControllers();
+
             // Add services
             services.AddScoped<IUserService, UserService>();
 
@@ -29,10 +31,19 @@ namespace DatabaseService.Core
                 .AddEntityFrameworkStores<CustomIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            // Add other services here
-            // services.AddHttpClient(), services.AddScoped<MyService>(), etc.
-
             services.AddScoped<UserMapper>();
+
+            //cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Allowhost", builder =>
+                {
+                    builder.WithOrigins("https://localhost:44361")
+                    //builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
 
             return services;
         }

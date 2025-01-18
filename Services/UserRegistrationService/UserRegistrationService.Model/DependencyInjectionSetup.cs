@@ -1,18 +1,15 @@
-﻿using FluentValidation;
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Reflection;
 using System.Text;
+using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Mapper;
 using UserRegistrationService.Core.Models.ConfigurationModels;
-using UserRegistrationService.Core.Validator;
-using UserRegistrationService.Model.Contracts.Services;
-using UserRegistrationService.Model.Service;
+using UserRegistrationService.Core.Service;
 
-namespace UserRegistrationService.Model
+namespace UserRegistrationService.Core
 {
     public static class DependencyInjectionSetup
     {
@@ -73,7 +70,7 @@ namespace UserRegistrationService.Model
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost", builder =>
+                options.AddPolicy("Allowhost", builder =>
                 {
                     builder.WithOrigins("http://localhost:4200")
                     //builder.AllowAnyOrigin()

@@ -1,7 +1,7 @@
 ﻿using UserRegistrationService.Core.Models.InputModels;
 using UserRegistrationService.Core.Models.ResultModels;
 
-namespace UserRegistrationService.Model.Contracts.Services
+namespace UserRegistrationService.Core.Contracts.Services
 {
     public interface IAccountService
     {

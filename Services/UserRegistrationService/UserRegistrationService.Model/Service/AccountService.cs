@@ -4,14 +4,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
+using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Mapper;
 using UserRegistrationService.Core.Models.ConfigurationModels;
 using UserRegistrationService.Core.Models.InputModels;
 using UserRegistrationService.Core.Models.ResponseModels;
 using UserRegistrationService.Core.Models.ResultModels;
-using UserRegistrationService.Model.Contracts.Services;
 
-namespace UserRegistrationService.Model.Service
+namespace UserRegistrationService.Core.Service
 {
     internal class AccountService(IHttpClientFactory httpClientFactory, AccountMapper accountMapper, IOptions<JwtModel> configuration) : IAccountService
     {
@@ -110,7 +110,7 @@ namespace UserRegistrationService.Model.Service
                 if (databaseResponse != null)
                 {
                     var user = accountMapper.Map(databaseResponse);
-                     var token = GenerateJwtToken(user);
+                    var token = GenerateJwtToken(user);
                     return token;
                 }
             }
@@ -124,7 +124,7 @@ namespace UserRegistrationService.Model.Service
             new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("id", user.Id.ToString()),
-                new Claim("role", "user") 
+                new Claim("role", "user")
         };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Value.PrivateKey));
