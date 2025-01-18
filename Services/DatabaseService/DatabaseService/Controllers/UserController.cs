@@ -16,7 +16,7 @@ namespace DatabaseService.Api.Controllers
         /// <param name="model">The model containing user registration details.</param>
         /// <returns>A response indicating success or failure of the registration process.</returns>
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterInput model)
+        public async Task<ActionResult> Register([FromBody] RegisterInput model)
         {
             var response = await userService.Register(model);
 
@@ -36,7 +36,7 @@ namespace DatabaseService.Api.Controllers
         /// <param name="model">The model containing user login details (email and password).</param>
         /// <returns>A response with the JWT token on success or an error message on failure.</returns>
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] LoginInput model)
+        public async Task<ActionResult> Authenticate([FromBody] LoginInput model)
         {
             var response = await userService.Authenticate(model);
             return Ok(response);
@@ -51,7 +51,7 @@ namespace DatabaseService.Api.Controllers
         /// <returns>A response with true on success or an error message on failure.</returns>
 
         [HttpPost("userAlreadyRegister")]
-        public async Task<IActionResult> UserAlreadyRegister([FromBody] ExistingRegisterInput model)
+        public async Task<ActionResult> UserAlreadyRegister([FromBody] ExistingRegisterInput model)
         {
             var response = await userService.UserAlreadyRegistered(model);
 

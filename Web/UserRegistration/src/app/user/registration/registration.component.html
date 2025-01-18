@@ -13,12 +13,12 @@
           <mat-label>First Name</mat-label>
           <input
             matInput
-            formControlName="userName"
+            formControlName="username"
             placeholder="First Name"
             required
           />
           <mat-error
-            *ngIf="form['userName']?.touched && form['userName']?.invalid"
+            *ngIf="form['username']?.touched && form['username']?.invalid"
           >
             First Name is required.
           </mat-error>

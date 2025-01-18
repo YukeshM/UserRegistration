@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../service/auth.service'; // Make sure the path is correct
+import { AuthService } from '../../service/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import {
   ReactiveFormsModule,
@@ -46,7 +46,7 @@ export class RegistrationComponent {
     private snackBar: MatSnackBar
   ) {
     this.registerForm = this.fb.group({
-      userName: ['', Validators.required],
+      username: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -60,7 +60,7 @@ export class RegistrationComponent {
         ],
       ],
       registrationDate: ['', Validators.required],
-      // document: [null, Validators.required],
+      document: [null, Validators.required],
     });
   }
 
@@ -70,21 +70,51 @@ export class RegistrationComponent {
 
   onRegister() {
     if (this.registerForm.invalid) {
+      this.snackBar.open('Please fill in all fields correctly.', 'Close', {
+        duration: 3000,
+        panelClass: ['error-snackbar'],
+      });
       return;
     }
 
-    const formData = this.registerForm.value;
+    const formDataFromForm = this.registerForm.value;
+    const formData = new FormData();
+    formData.append('Username', this.registerForm.get('username')?.value);
+    formData.append('LastName', this.registerForm.get('lastName')?.value);
+    formData.append('Email', this.registerForm.get('email')?.value);
+    formData.append('Password', this.registerForm.get('password')?.value);
+
+    const registrationDate = this.registerForm.get('registrationDate')?.value;
+    const formattedDate = new Date(registrationDate).toISOString();
+    formData.append('RegistrationDate', formattedDate);
+
+    formData.append('Document', this.registerForm.get('document')?.value);
     // console.log('Selected document:', formData.document);
+
+    console.log('FormData Contents:');
+    formData.forEach((value, key) => {
+      console.log(`${key}:`, value);
+    });
 
     // Call the auth service to register the user
     this.authService.register(formData).subscribe({
-      next: (response : any) => {
-        console.log('Registration successful:', response);
+      next: (response: any) => {
+        this.snackBar.open('Registration successful! Redirecting...', 'Close', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+        });
         this.router.navigate(['/login']);
       },
       error: (error) => {
         console.error('Registration error:', error);
-        alert('There was an error during registration. Please try again.');
+        this.snackBar.open(
+          'Registration failed. Please contact administrator.',
+          'Close',
+          {
+            duration: 3000,
+            panelClass: ['error-snackbar'],
+          }
+        );
       },
     });
   }

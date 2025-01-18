@@ -1,5 +1,8 @@
-﻿using Serilog;
+﻿using DatabaseService.Core.Models.ResultModels;
+using Serilog;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
+using System.Security.Authentication;
 using System.Text.Json;
 
 namespace DatabaseService.Api.Middleware
@@ -31,6 +34,16 @@ namespace DatabaseService.Api.Middleware
                 Message = "An unexpected error occurred.",
                 Details = exception.Message // Can be removed in production for security
             };
+
+            if (exception.GetType() == typeof(InvalidCredentialException)) {
+                response = new
+                {
+                    StatusCode = (int)HttpStatusCode.Unauthorized,
+                    Message = exception.Message,
+                    Details = exception.Message // Can be removed in production for security
+                };
+            }
+
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

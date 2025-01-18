@@ -6,6 +6,8 @@ using DatabaseService.Core.Models.InputModels;
 using DatabaseService.Core.Models.ResultModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Authentication;
 
 namespace DatabaseService.Core.Services
 {
@@ -69,7 +71,7 @@ namespace DatabaseService.Core.Services
                 throw new Exception();
             }
 
-            throw new Exception();
+            throw new InvalidCredentialException("Invalid Credentials");
         }
 
         public async Task<ServiceResponse<string>> UserAlreadyRegistered(ExistingRegisterInput model)

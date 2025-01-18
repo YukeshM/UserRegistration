@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Models.InputModels;
+using UserRegistrationService.Core.Models.ResponseModels;
 using UserRegistrationService.Core.Models.ResultModels;
 
 namespace UserRegistrationService.Api.Controllers
@@ -38,11 +39,11 @@ namespace UserRegistrationService.Api.Controllers
         /// <param name="loginModel">The model containing user login details (email and password).</param>
         /// <returns>A response with the JWT token on success or an error message on failure.</returns>
         [HttpPost("login")]
-        public async Task<ActionResult<ServiceResponse<string>>> Login([FromBody] LoginInput loginModel)
+        public async Task<ActionResult<ServiceResponse<LoginResponse>>> Login([FromBody] LoginInput loginModel)
         {
             var response = await accountService.LoginAsync(loginModel);
 
-            return ServiceResponse<string>.SuccessResponse(response, "Log in success");
+            return ServiceResponse<LoginResponse>.SuccessResponse(response, "Log in success");
         }
 
     }

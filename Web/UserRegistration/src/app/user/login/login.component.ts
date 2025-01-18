@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../service/auth.service'; // Make sure the path is correct
+import { AuthService } from '../../service/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import {
   ReactiveFormsModule,
@@ -16,7 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     CommonModule,
