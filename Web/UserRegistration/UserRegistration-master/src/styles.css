@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Snackbar Styles */
+.success-snackbar {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.error-snackbar {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+/* Form Validation Error Styles */
+.is-invalid {
+  border: 1px solid #f44336; /* Red border for invalid fields */
+}
+
+.error {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}

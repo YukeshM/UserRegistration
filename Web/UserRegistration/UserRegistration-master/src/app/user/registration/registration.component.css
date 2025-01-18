@@ -1,0 +1,145 @@
+/* General Styles */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #45b3a4, #7dd3c2);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 15px;
+  padding: 50px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  color: #333;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.upload-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-button {
+  background-color: #45b3a4;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.auth-button:hover {
+  background-color: #3a9889;
+  transform: translateY(-2px);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.switch-auth {
+  margin-top: 25px;
+  font-size: 15px;
+  color: #666;
+}
+
+.switch-auth a {
+  color: #45b3a4;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.switch-auth a:hover {
+  color: #3a9889;
+  text-decoration: underline;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-form-field {
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 40px;
+    max-width: 400px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .auth-button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .auth-form {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 15px;
+  }
+
+  .auth-card {
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .auth-button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .auth-form {
+    gap: 15px;
+  }
+
+  .switch-auth {
+    font-size: 13px;
+  }
+}

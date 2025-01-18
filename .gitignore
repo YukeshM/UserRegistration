@@ -2,19 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/DatabaseService/.vs/DatabaseService
-/DatabaseService/bin/Debug/net8.0
-/DatabaseService/logs
-/DatabaseService/obj
-/DatabaseService.Model/bin/Debug/net8.0
-/DatabaseService.Model/obj
-/UserRegistrationService/.vs
-/UserRegistrationService/bin/Debug/net8.0
-/UserRegistrationService/logs
-/UserRegistrationService/obj
-/UserRegistrationService.Model/bin/Debug/net8.0
-/UserRegistrationService.Model/obj
-/DatabaseService/.vs/ProjectEvaluation
-/user-registration/.vscode
-/user-registration/package-lock.json
-/UserRegistrationService/Uploads
+/Services/DatabaseService/DatabaseService/.vs/DatabaseService/FileContentIndex

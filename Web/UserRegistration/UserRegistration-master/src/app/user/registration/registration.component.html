@@ -1,0 +1,174 @@
+<div class="auth-container">
+  <div class="auth-card register-card">
+    <h1>Create Account</h1>
+
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+      class="auth-form"
+    >
+      <!-- First Name Field -->
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            formControlName="userName"
+            placeholder="First Name"
+            required
+          />
+          <mat-error
+            *ngIf="form['userName']?.touched && form['userName']?.invalid"
+          >
+            First Name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Last Name Field -->
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            formControlName="lastName"
+            placeholder="Last Name"
+            required
+          />
+          <mat-error
+            *ngIf="form['lastName']?.touched && form['lastName']?.invalid"
+          >
+            Last Name is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+            required
+          />
+          <mat-error *ngIf="form['email']?.touched && form['email']?.invalid">
+            <span *ngIf="form['email']?.errors?.['required']">
+              Email is required.
+            </span>
+            <span *ngIf="form['email']?.errors?.['email']">
+              Enter a valid email.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="Password"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="togglePasswordVisibility()"
+            type="button"
+            aria-label="Toggle password visibility"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="form['password']?.touched && form['password']?.invalid"
+          >
+            <span *ngIf="form['password']?.errors?.['required']">
+              Password is required.
+            </span>
+            <span *ngIf="form['password']?.errors?.['minlength']">
+              Password must be at least 6 characters long.
+            </span>
+            <span *ngIf="form['password']?.errors?.['pattern']">
+              Password must include at least one uppercase letter, one lowercase
+              letter, one number, and one special character.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Date Picker -->
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Registration Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="registrationDate"
+            placeholder="Select Registration Date"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error
+            *ngIf="
+              form['registrationDate']?.touched &&
+              form['registrationDate']?.invalid
+            "
+          >
+            Registration Date is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Document Upload -->
+      <!-- <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Upload Document</mat-label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </mat-form-field>
+      </div> -->
+
+      <div class="form-group">
+        <label for="document" class="mat-label">Upload Document</label>
+        <input
+          type="file"
+          id="document"
+          (change)="onFileSelected($event)"
+          class="file-input"
+          required
+          accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx,.csv"
+        />
+        <mat-error
+          *ngIf="form['document']?.touched && form['document']?.invalid"
+        >
+          Document upload is required.
+        </mat-error>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        SIGN UP
+      </button>
+    </form>
+
+    <p class="switch-auth">
+      Already have an account? <a routerLink="/login">Sign In</a>
+    </p>
+  </div>
+</div>

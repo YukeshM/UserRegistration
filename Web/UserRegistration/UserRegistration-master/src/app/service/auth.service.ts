@@ -13,17 +13,20 @@ export class AuthService {
     private http: HttpClient,
     private configService: AppConfigService
   ) {
-    this.apiUrl = this.configService.apiUrl;
+    this.apiUrl = 'https://localhost:44361';
   }
 
   // Register User
   register(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/user/register`, user);
+    return this.http.post(`${this.apiUrl}/api/account/register`, user);
   }
 
   // Login User
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/user/authenticate`, credentials);
+    return this.http.post(
+      `${this.apiUrl}/api/account/login`,
+      credentials
+    );
   }
 
   // Store JWT token after login
