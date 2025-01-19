@@ -39,16 +39,13 @@ export class LoginComponent {
     private router: Router,
     private snackBar: MatSnackBar
   ) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    }
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.pattern(/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]/),
-        ],
-      ],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -61,6 +58,7 @@ export class LoginComponent {
       this.snackBar.open('Please fill in all fields correctly.', 'Close', {
         duration: 3000,
         panelClass: ['error-snackbar'],
+        verticalPosition: 'top',
       });
       return;
     }
@@ -71,13 +69,19 @@ export class LoginComponent {
       next: (response: any) => {
         console.log(response);
 
-        if (response.success && response.data != '' && response.data) {
-          this.authService.storeToken(response.data);
+        if (
+          response.success &&
+          response.data != '' &&
+          response.data &&
+          response.data.token != ''
+        ) {
+          this.authService.storeToken(response.data.token);
 
           // Show success message using Snackbar
           this.snackBar.open('Login successful! Redirecting...', 'Close', {
             duration: 3000,
             panelClass: ['success-snackbar'],
+            verticalPosition: 'top', // Display snackbar at the top
           });
 
           // Navigate to home page after successful login
@@ -89,6 +93,7 @@ export class LoginComponent {
             {
               duration: 3000,
               panelClass: ['error-snackbar'],
+              verticalPosition: 'top', // Display snackbar at the top
             }
           );
         }
@@ -101,6 +106,7 @@ export class LoginComponent {
           {
             duration: 3000,
             panelClass: ['error-snackbar'],
+            verticalPosition: 'top', // Display snackbar at the top
           }
         );
       },

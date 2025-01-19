@@ -19,6 +19,7 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
+  providers: [AuthService],
   imports: [
     ReactiveFormsModule,
     CommonModule,
@@ -45,6 +46,10 @@ export class RegistrationComponent {
     private router: Router,
     private snackBar: MatSnackBar
   ) {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);
+    }
+
     this.registerForm = this.fb.group({
       username: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -73,6 +78,7 @@ export class RegistrationComponent {
       this.snackBar.open('Please fill in all fields correctly.', 'Close', {
         duration: 3000,
         panelClass: ['error-snackbar'],
+        verticalPosition: 'top',
       });
       return;
     }
@@ -89,12 +95,6 @@ export class RegistrationComponent {
     formData.append('RegistrationDate', formattedDate);
 
     formData.append('Document', this.registerForm.get('document')?.value);
-    // console.log('Selected document:', formData.document);
-
-    console.log('FormData Contents:');
-    formData.forEach((value, key) => {
-      console.log(`${key}:`, value);
-    });
 
     // Call the auth service to register the user
     this.authService.register(formData).subscribe({
@@ -102,6 +102,7 @@ export class RegistrationComponent {
         this.snackBar.open('Registration successful! Redirecting...', 'Close', {
           duration: 3000,
           panelClass: ['success-snackbar'],
+          verticalPosition: 'top', // Display snackbar at the top
         });
         this.router.navigate(['/login']);
       },
@@ -113,6 +114,7 @@ export class RegistrationComponent {
           {
             duration: 3000,
             panelClass: ['error-snackbar'],
+            verticalPosition: 'top', // Display snackbar at the top
           }
         );
       },

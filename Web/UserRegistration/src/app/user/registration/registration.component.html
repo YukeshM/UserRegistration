@@ -97,8 +97,7 @@
               Password must be at least 6 characters long.
             </span>
             <span *ngIf="form['password']?.errors?.['pattern']">
-              Password must include at least one uppercase letter, one lowercase
-              letter, one number, and one special character.
+              Password must contain an uppercase letter, a lowercase letter, a number, and a special character.
             </span>
           </mat-error>
         </mat-form-field>
@@ -132,20 +131,15 @@
       </div>
 
       <!-- Document Upload -->
-      <!-- <div class="form-group">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Upload Document</mat-label>
-          <input type="file" (change)="onFileSelected($event)" />
-        </mat-form-field>
-      </div> -->
+      
 
-      <div class="form-group">
+      <div class="form-group file-upload">
         <label for="document" class="mat-label">Upload Document</label>
         <input
           type="file"
           id="document"
           (change)="onFileSelected($event)"
-          class="file-input"
+          class="file-input custom-file-input"
           required
           accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xls,.xlsx,.csv"
         />

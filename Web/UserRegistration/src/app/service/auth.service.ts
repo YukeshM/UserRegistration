@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigService } from './app-config.service';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class AuthService {
     private http: HttpClient,
     private configService: AppConfigService
   ) {
-    this.apiUrl = 'https://localhost:44361';
+    this.apiUrl = environment.ApiUrl;
   }
 
   // Register User
@@ -23,10 +24,7 @@ export class AuthService {
 
   // Login User
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(
-      `${this.apiUrl}/api/account/login`,
-      credentials
-    );
+    return this.http.post(`${this.apiUrl}/api/account/login`, credentials);
   }
 
   // Store JWT token after login
