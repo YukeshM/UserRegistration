@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Api", "DatabaseService.Api.csproj", "{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Api", "DatabaseService\DatabaseService.Api.csproj", "{F73BD3C2-7A20-461D-A33C-F1CE83C2B8C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Core", "..\DatabaseService.Model\DatabaseService.Core.csproj", "{E5EFD6D3-96E2-4DFA-B604-329730285690}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Core", "DatabaseService.Model\DatabaseService.Core.csproj", "{E5EFD6D3-96E2-4DFA-B604-329730285690}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Test", "..\DatabaseService.Test\DatabaseService.Test.csproj", "{4FC5428C-EA7E-4A2D-836B-A0593CC7D69C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService.Test", "DatabaseService.Test\DatabaseService.Test.csproj", "{4FC5428C-EA7E-4A2D-836B-A0593CC7D69C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

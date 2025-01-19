@@ -2,4 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Services/DatabaseService/DatabaseService/.vs/DatabaseService/FileContentIndex
+**/.vs
+**/bin
+**/obj
+**/obj/**
+Services/DatabaseService/DatabaseService/obj/**
+/Services/DatabaseService/DatabaseService/.vs/DatabaseService/DesignTimeBuild/.dtbcache.v2

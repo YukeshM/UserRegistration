@@ -1,4 +1,4 @@
-﻿using DatabaseService.Core.DataAccess.IdentityMapper;
+﻿using DatabaseService.Core.DataAccess.IdentityModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

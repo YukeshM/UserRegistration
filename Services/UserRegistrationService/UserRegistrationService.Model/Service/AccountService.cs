@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Authentication;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
@@ -31,6 +32,24 @@ namespace UserRegistrationService.Core.Service
                 // var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                 var folderPath = appConfiguration.Value.FolderPath;
 
+                try
+                {
+                    // Ensure the folder exists
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    //log, remo
+                    throw new ArgumentException("The specified drive does not exist.");
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException("An error occurred while creating the directory.", ex);
+                }
+
                 // Validate the document
                 if (model.Document == null || model.Document.Length == 0)
                 {
@@ -48,23 +67,6 @@ namespace UserRegistrationService.Core.Service
                 if (string.IsNullOrWhiteSpace(folderPath) || folderPath.IndexOfAny(Path.GetInvalidPathChars()) >= 0)
                 {
                     throw new ArgumentException("Invalid folder path.");
-                }
-
-                try
-                {
-                    // Ensure the folder exists
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-                }
-                catch (DirectoryNotFoundException)
-                {
-                    throw new ArgumentException("The specified drive does not exist.");
-                }
-                catch (Exception ex)
-                {
-                    throw new InvalidOperationException("An error occurred while creating the directory.", ex);
                 }
 
                 var filePath = Path.Combine(folderPath, model.Document.FileName);
@@ -129,7 +131,11 @@ namespace UserRegistrationService.Core.Service
                     return new LoginResponse { Token = token };
                 }
             }
-            throw new Exception("Login failed");
+            var errorJsonResponse = await response.Content.ReadAsStringAsync();
+
+            var errorDatabaseResponse = JsonSerializer.Deserialize<ServiceResponse<string>>(errorJsonResponse);
+
+            throw new InvalidCredentialException(errorDatabaseResponse.Message);
         }
 
         private string GenerateJwtToken(LoginResult user)

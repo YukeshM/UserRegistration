@@ -22,7 +22,7 @@ try
 
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Portfolio", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Database service", Version = "v1" });
 
 
         // Include 'SecurityScheme' to use JWT Authentication
@@ -61,11 +61,11 @@ try
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
-    {
+    //if (app.Environment.IsDevelopment())
+    //{
         app.UseSwagger();
         app.UseSwaggerUI();
-    }
+    //}
 
     app.UseMiddleware<ErrorHandlingMiddleware>();
 

@@ -46,5 +46,11 @@ namespace UserRegistrationService.Api.Controllers
             return ServiceResponse<LoginResponse>.SuccessResponse(response, "Log in success");
         }
 
+        [HttpGet]
+        public ActionResult TestApi()
+        {
+            return Ok("Api request success");
+        }
+
     }
 }

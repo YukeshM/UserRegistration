@@ -1,6 +1,6 @@
 ﻿using DatabaseService.Core.Contracts.Services;
 using DatabaseService.Core.DataAccess;
-using DatabaseService.Core.DataAccess.IdentityMapper;
+using DatabaseService.Core.DataAccess.IdentityModel;
 using DatabaseService.Core.Mapper;
 using DatabaseService.Core.Models.InputModels;
 using DatabaseService.Core.Models.ResultModels;

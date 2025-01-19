@@ -1,6 +1,6 @@
 ﻿using DatabaseService.Core.Contracts.Services;
 using DatabaseService.Core.DataAccess;
-using DatabaseService.Core.DataAccess.IdentityMapper;
+using DatabaseService.Core.DataAccess.IdentityModel;
 using DatabaseService.Core.Mapper;
 using DatabaseService.Core.Services;
 using Microsoft.AspNetCore.Identity;
@@ -33,12 +33,13 @@ namespace DatabaseService.Core
 
             services.AddScoped<UserMapper>();
 
+            var allowedOrigins = configuration.GetSection("AllowedOrigins").Get<string[]>();
             //cors
             services.AddCors(options =>
             {
                 options.AddPolicy("Allowhost", builder =>
                 {
-                    builder.WithOrigins("https://localhost:44361")
+                    builder.WithOrigins(allowedOrigins)
                     //builder.AllowAnyOrigin()
                            .AllowAnyHeader()
                            .AllowAnyMethod();

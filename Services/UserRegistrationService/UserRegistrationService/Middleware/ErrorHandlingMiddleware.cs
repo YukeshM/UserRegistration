@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System.Net;
+using System.Security.Authentication;
 using System.Text.Json;
 
 namespace UserRegistrationService.Api.Middleware
@@ -31,6 +32,16 @@ namespace UserRegistrationService.Api.Middleware
                 Message = "An unexpected error occurred.",
                 Details = exception.Message // Can be removed in production for security
             };
+
+            if (exception.GetType() == typeof(InvalidCredentialException))
+            {
+                response = new
+                {
+                    StatusCode = (int)HttpStatusCode.Unauthorized,
+                    Message = exception.Message,
+                    Details = exception.Message // Can be removed in production for security
+                };
+            }
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

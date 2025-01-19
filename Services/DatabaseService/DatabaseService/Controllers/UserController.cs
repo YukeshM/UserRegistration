@@ -62,5 +62,11 @@ namespace DatabaseService.Api.Controllers
 
             return BadRequest(response);
         }
+
+        [HttpGet]
+        public ActionResult TestApi()
+        {
+            return Ok("Api request success");
+        }
     }
 }
