@@ -11,7 +11,7 @@
             return new ServiceResponse<T>
             {
                 Success = true,
-                Message = message ?? "Operation successful",
+                Message = message != null ? message  : "Operation successful",
                 Data = data
             };
         }

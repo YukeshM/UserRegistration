@@ -13,19 +13,23 @@ using UserRegistrationService.Core.Models.ResultModels;
 
 namespace UserRegistrationService.Core.Service
 {
-    internal class AccountService(IHttpClientFactory httpClientFactory, AccountMapper accountMapper, IOptions<JwtModel> configuration) : IAccountService
+    public class AccountService(IHttpClientFactory httpClientFactory, AccountMapper accountMapper, IOptions<JwtModel> jwtConfiguration, IOptions<ConfigurationModel> appConfiguration) : IAccountService
     {
         public async Task<ServiceResponse<string>> RegisterAsync(RegisterInput model)
         {
             var client = httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:44303");
+            client.BaseAddress = new Uri(appConfiguration.Value.DBUrl);
+
             var existingRegisterModel = accountMapper.MapExistingRegister(model);
+
             var jsonContentForExistingRegister = new StringContent(JsonSerializer.Serialize(existingRegisterModel), Encoding.UTF8, "application/json");
+
             var responseForExistingRegister = await client.PostAsync("/api/user/userAlreadyRegister", jsonContentForExistingRegister);
 
             if (responseForExistingRegister.IsSuccessStatusCode)
             {
-                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                // var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                var folderPath = appConfiguration.Value.FolderPath;
 
                 // Validate the document
                 if (model.Document == null || model.Document.Length == 0)
@@ -46,10 +50,21 @@ namespace UserRegistrationService.Core.Service
                     throw new ArgumentException("Invalid folder path.");
                 }
 
-                // Ensure the folder exists
-                if (!Directory.Exists(folderPath))
+                try
                 {
-                    Directory.CreateDirectory(folderPath);
+                    // Ensure the folder exists
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    throw new ArgumentException("The specified drive does not exist.");
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException("An error occurred while creating the directory.", ex);
                 }
 
                 var filePath = Path.Combine(folderPath, model.Document.FileName);
@@ -92,10 +107,10 @@ namespace UserRegistrationService.Core.Service
             return ServiceResponse<string>.ErrorResponse(errorMessage);
         }
 
-        public async Task<string> LoginAsync(LoginInput model)
+        public async Task<LoginResponse> LoginAsync(LoginInput model)
         {
             var client = httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:44303");
+            client.BaseAddress = new Uri(appConfiguration.Value.DBUrl);
 
             var jsonContent = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
@@ -111,7 +126,7 @@ namespace UserRegistrationService.Core.Service
                 {
                     var user = accountMapper.Map(databaseResponse);
                     var token = GenerateJwtToken(user);
-                    return token;
+                    return new LoginResponse { Token = token };
                 }
             }
             throw new Exception("Login failed");
@@ -127,12 +142,12 @@ namespace UserRegistrationService.Core.Service
                 new Claim("role", "user")
         };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.Value.PrivateKey));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguration.Value.PrivateKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: configuration.Value.Issuer,
-                audience: configuration.Value.Audience,
+                issuer: jwtConfiguration.Value.Issuer,
+                audience: jwtConfiguration.Value.Audience,
                 claims: claims,
                 expires: DateTime.Now.AddHours(1),
                 signingCredentials: creds);

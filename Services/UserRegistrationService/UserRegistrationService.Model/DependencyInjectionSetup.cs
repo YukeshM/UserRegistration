@@ -40,6 +40,7 @@ namespace UserRegistrationService.Core
 
             //to inject this service for controller
             services.Configure<JwtModel>(configuration.GetSection("Jwt"));
+            services.Configure<ConfigurationModel>(configuration.GetSection("Configuration"));
 
             //for getting jwt properties
             var issuer = configuration.GetSection("Jwt").GetSection("Issuer");

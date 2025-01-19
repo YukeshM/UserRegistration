@@ -45,7 +45,7 @@ namespace DatabaseService.Core.Services
 
             var result = await userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded && user != null && user.Id != Guid.Empty)
+            if (result.Succeeded && user != null)
             {
                 userDocument.UserId = user.Id;
                 await userManagementDbContext.Documents.AddAsync(userDocument);
@@ -68,7 +68,7 @@ namespace DatabaseService.Core.Services
                     return userMapper.Map(user);
                 }
 
-                throw new Exception();
+                throw new AuthenticationException();
             }
 
             throw new InvalidCredentialException("Invalid Credentials");
@@ -76,25 +76,21 @@ namespace DatabaseService.Core.Services
 
         public async Task<ServiceResponse<string>> UserAlreadyRegistered(ExistingRegisterInput model)
         {
-            // Check if email or username already exists
-            var existingUser = await userManager.Users
-                .Where(u => u.Email == model.Email || u.UserName == model.Username)
-                .FirstOrDefaultAsync();
+            var existingEmail = await userManager.FindByEmailAsync(model.Email);
+            var existingUserName = await userManager.FindByNameAsync(model.Username);
 
-            if (existingUser != null)
+            if (existingEmail != null  && existingEmail.Email == model.Email)
             {
-                if (existingUser.Email == model.Email)
-                {
-                    return ServiceResponse<string>.ErrorResponse("User with this email already exists.");
-                }
-
-                if (existingUser.UserName == model.Username)
-                {
-                    return ServiceResponse<string>.ErrorResponse("User with this username already exists.");
-                }
+                return ServiceResponse<string>.ErrorResponse("User with this email already exists.");
             }
 
-            return ServiceResponse<string>.SuccessResponse("User with these details does not exist.");
+            if (existingUserName != null && existingUserName.UserName == model.Username)
+            {
+                return ServiceResponse<string>.ErrorResponse("User with this username already exists.");
+            }
+
+
+            return ServiceResponse<string>.SuccessResponse(null, "User with these details does not exist.");
         }
     }
 }
