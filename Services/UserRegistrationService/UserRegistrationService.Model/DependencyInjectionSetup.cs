@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +9,7 @@ using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Mapper;
 using UserRegistrationService.Core.Models.ConfigurationModels;
 using UserRegistrationService.Core.Service;
+using UserRegistrationService.Core.Validator;
 
 namespace UserRegistrationService.Core
 {
@@ -18,25 +20,15 @@ namespace UserRegistrationService.Core
             // Add services
             services.AddScoped<IAccountService, AccountService>();
 
-            // Register FluentValidation
-            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddValidatorsFromAssemblyContaining<RegisterModelValidator>();
+            services.AddValidatorsFromAssemblyContaining<LoginModelValidator>();
 
-            services.AddFluentValidationAutoValidation();
-            services.AddFluentValidationClientsideAdapters();
-
-            //services.AddFluentValidationAutoValidation()
-            //        .AddFluentValidationClientsideAdapters();
-
-            //services.AddValidatorsFromAssemblyContaining<RegisterModelValidator>();
-            //services.AddValidatorsFromAssemblyContaining<LoginModelValidator>();
-
-
-            //services.AddControllers()
-            //    .AddFluentValidation(fv =>
-            //    {
-            //        fv.RegisterValidatorsFromAssemblyContaining<RegisterModelValidator>();
-            //        fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>();
-            //    });
+            services.AddControllers()
+                .AddFluentValidation(fv =>
+                {
+                    fv.RegisterValidatorsFromAssemblyContaining<RegisterModelValidator>();
+                    fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>();
+                });
 
             //to inject this service for controller
             services.Configure<JwtModel>(configuration.GetSection("Jwt"));

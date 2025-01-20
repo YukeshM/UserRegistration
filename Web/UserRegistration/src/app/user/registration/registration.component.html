@@ -20,7 +20,15 @@
           <mat-error
             *ngIf="form['username']?.touched && form['username']?.invalid"
           >
-            First Name is required.
+            <span *ngIf="form['username']?.errors?.['required']">
+              First Name is required.
+            </span>
+            <span *ngIf="form['username']?.errors?.['minlength']">
+              First Name must be at least 3 characters long.
+            </span>
+            <span *ngIf="form['username']?.errors?.['maxlength']">
+              First Name cannot be more than 50 characters long.
+            </span>
           </mat-error>
         </mat-form-field>
       </div>
@@ -38,7 +46,15 @@
           <mat-error
             *ngIf="form['lastName']?.touched && form['lastName']?.invalid"
           >
-            Last Name is required.
+            <span *ngIf="form['lastName']?.errors?.['required']">
+              Last Name is required.
+            </span>
+            <span *ngIf="form['lastName']?.errors?.['minlength']">
+              Last Name must be at least 1 character long.
+            </span>
+            <span *ngIf="form['lastName']?.errors?.['maxlength']">
+              Last Name cannot be more than 50 characters long.
+            </span>
           </mat-error>
         </mat-form-field>
       </div>
@@ -97,7 +113,8 @@
               Password must be at least 6 characters long.
             </span>
             <span *ngIf="form['password']?.errors?.['pattern']">
-              Password must contain an uppercase letter, a lowercase letter, a number, and a special character.
+              Password must contain an uppercase letter, a lowercase letter, a
+              number, and a special character.
             </span>
           </mat-error>
         </mat-form-field>
@@ -131,8 +148,9 @@
       </div>
 
       <!-- Document Upload -->
-      
-
+      <div *ngIf="selectedFileName" class="file-name">
+        Selected file: {{ selectedFileName }}
+      </div>
       <div class="form-group file-upload">
         <label for="document" class="mat-label">Upload Document</label>
         <input

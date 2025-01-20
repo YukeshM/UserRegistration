@@ -39,6 +39,7 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 export class RegistrationComponent {
   registerForm: FormGroup;
   hidePassword = true;
+  selectedFileName: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -51,8 +52,22 @@ export class RegistrationComponent {
     }
 
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
-      lastName: ['', Validators.required],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(50),
+        ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50),
+        ],
+      ],
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -83,7 +98,6 @@ export class RegistrationComponent {
       return;
     }
 
-    const formDataFromForm = this.registerForm.value;
     const formData = new FormData();
     formData.append('Username', this.registerForm.get('username')?.value);
     formData.append('LastName', this.registerForm.get('lastName')?.value);
@@ -99,12 +113,18 @@ export class RegistrationComponent {
     // Call the auth service to register the user
     this.authService.register(formData).subscribe({
       next: (response: any) => {
-        this.snackBar.open('Registration successful! Redirecting...', 'Close', {
-          duration: 3000,
-          panelClass: ['success-snackbar'],
-          verticalPosition: 'top', // Display snackbar at the top
-        });
-        this.router.navigate(['/login']);
+        if (response.success) {
+          this.snackBar.open(
+            'Registration successful! Redirecting...',
+            'Close',
+            {
+              duration: 3000,
+              panelClass: ['success-snackbar'],
+              verticalPosition: 'top',
+            }
+          );
+          this.router.navigate(['/login']);
+        }
       },
       error: (error) => {
         console.error('Registration error:', error);
@@ -114,7 +134,7 @@ export class RegistrationComponent {
           {
             duration: 3000,
             panelClass: ['error-snackbar'],
-            verticalPosition: 'top', // Display snackbar at the top
+            verticalPosition: 'top',
           }
         );
       },
@@ -128,10 +148,14 @@ export class RegistrationComponent {
       if (file.size > 10 * 1024 * 1024) {
         this.snackBar.open('File size should not exceed 10MB.', 'Close', {
           duration: 3000,
+          panelClass: ['error-snackbar'],
+          verticalPosition: 'top',
         });
         return;
       }
+
       this.registerForm.patchValue({ document: file });
+      this.selectedFileName = file.name; // Add this line
       console.log('File selected:', file.name);
     }
   }

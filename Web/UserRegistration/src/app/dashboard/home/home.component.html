@@ -1,14 +1,29 @@
 <div class="welcome-container">
   <header class="welcome-header">
     <h1>Welcome to Test Application</h1>
-
     <mat-icon [color]="'#fff'" class="logout-button" (click)="logout()">logout</mat-icon>
   </header>
 
   <main class="welcome-main" style="font-size: 1.2em">
-    <p>
-      We are glad to have you here. Explore our features and enjoy your stay!
-    </p>
+    <p>We are glad to have you here. Explore our features and enjoy your stay!</p>
+    <div *ngIf="isAdmin" class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 
   <footer class="welcome-footer">

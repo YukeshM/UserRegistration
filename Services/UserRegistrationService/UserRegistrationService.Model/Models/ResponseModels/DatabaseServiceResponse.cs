@@ -12,6 +12,9 @@ namespace UserRegistrationService.Core.Models.ResponseModels
 
         [JsonPropertyName("email")]
         public string Email { get; set; }
+
+        [JsonPropertyName("role")]
+        public string Role { get; set; }
     }
 
 }

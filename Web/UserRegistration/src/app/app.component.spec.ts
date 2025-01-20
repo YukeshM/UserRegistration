@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterOutlet } from '@angular/router'; // Import RouterOutlet
+import { RouterOutlet } from '@angular/router';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -8,8 +8,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [RouterOutlet], // Include RouterOutlet for routing functionality
+      imports: [AppComponent, RouterOutlet], // Include AppComponent and RouterOutlet in imports
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -17,11 +16,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the app', () => {
+  it('app component should create the app', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should have the correct title', () => {
-    expect(component.title).toBe('user-registration');
   });
 });

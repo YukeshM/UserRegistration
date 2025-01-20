@@ -11,6 +11,8 @@ namespace UserRegistrationService.Core.Mapper
         public partial LoginResult Map(DatabaseServiceResponse source);
         public partial RegisterInputDatabase Map(RegisterInput source);
         public partial ExistingRegisterInput MapExistingRegister(RegisterInput source);
+        public partial List<UserResponse> MapUser(List<UserListInput> source);
+
 
     }
 }

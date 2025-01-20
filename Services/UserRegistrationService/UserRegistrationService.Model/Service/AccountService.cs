@@ -138,15 +138,42 @@ namespace UserRegistrationService.Core.Service
             throw new InvalidCredentialException(errorDatabaseResponse.Message);
         }
 
+
+        public async Task<List<UserResponse>> GetUsers()
+        {
+            var client = httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(appConfiguration.Value.DBUrl);
+
+            var response = await client.GetAsync("/api/user/GetAllUsers");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                var databaseResponse = JsonSerializer.Deserialize<List<UserListInput>>(jsonResponse);
+
+                if (databaseResponse != null)
+                {
+                    var user = accountMapper.MapUser(databaseResponse);
+                    return user;
+                }
+            }
+            var errorJsonResponse = await response.Content.ReadAsStringAsync();
+
+            var errorDatabaseResponse = JsonSerializer.Deserialize<ServiceResponse<string>>(errorJsonResponse);
+
+            throw new InvalidOperationException(errorDatabaseResponse.Message);
+        }
+
         private string GenerateJwtToken(LoginResult user)
         {
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("id", user.Id.ToString()),
-                new Claim("role", "user")
-        };
+                new Claim("role", user.Role)
+            };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfiguration.Value.PrivateKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

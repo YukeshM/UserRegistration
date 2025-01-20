@@ -1,6 +1,9 @@
 ﻿using DatabaseService.Core.Contracts.Services;
+using DatabaseService.Core.DataAccess.Domain;
 using DatabaseService.Core.Models.InputModels;
+using DatabaseService.Core.Models.ResultModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseService.Api.Controllers
 {
@@ -63,10 +66,23 @@ namespace DatabaseService.Api.Controllers
             return BadRequest(response);
         }
 
-        [HttpGet]
+
+        /// <summary>
+        /// Retrieves all users from the database.
+        /// </summary>
+        /// <returns>A list of all users.</returns>
+        
+        [HttpGet("GetAllUsers")]
+        public async Task<List<UserResponse>> GetAllUsersAsync()
+        {
+            return await userService.GetAllUsersAsync();
+        }
+
+
+        [HttpGet("TestApi")]
         public ActionResult TestApi()
         {
-            return Ok("Api request success");
+            return Ok("Database service Api request success");
         }
     }
 }

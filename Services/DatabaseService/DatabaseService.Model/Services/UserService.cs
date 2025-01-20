@@ -1,12 +1,13 @@
 ﻿using DatabaseService.Core.Contracts.Services;
 using DatabaseService.Core.DataAccess;
+using DatabaseService.Core.DataAccess.Domain;
 using DatabaseService.Core.DataAccess.IdentityModel;
 using DatabaseService.Core.Mapper;
 using DatabaseService.Core.Models.InputModels;
 using DatabaseService.Core.Models.ResultModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.SqlServer.Server;
 using System.Security.Authentication;
 
 namespace DatabaseService.Core.Services
@@ -44,7 +45,7 @@ namespace DatabaseService.Core.Services
             var userDocument = userMapper.MapUserDocument(model);
 
             var result = await userManager.CreateAsync(user, model.Password);
-
+            await userManager.AddToRoleAsync(user, "User");
             if (result.Succeeded && user != null)
             {
                 userDocument.UserId = user.Id;
@@ -63,9 +64,18 @@ namespace DatabaseService.Core.Services
             {
                 var result = await signInManager.PasswordSignInAsync(user, model.Password, false, false);
 
+                ApplicationUser userId = new()
+                {
+                    Id = user.Id
+                };
+
+                var role = await userManager.GetRolesAsync(userId);
+
                 if (result.Succeeded)
                 {
-                    return userMapper.Map(user);
+                    var userDeatail = userMapper.Map(user);
+                    userDeatail.Role = role[0].ToString();
+                    return userDeatail;
                 }
 
                 throw new AuthenticationException();
@@ -91,6 +101,20 @@ namespace DatabaseService.Core.Services
 
 
             return ServiceResponse<string>.SuccessResponse(null, "User with these details does not exist.");
+        }
+
+        public async Task<List<UserResponse>> GetAllUsersAsync()
+        {
+            var users = userManagementDbContext.Users.ToList();
+
+            return await userManagementDbContext.Users
+                                 .Select(users => new UserResponse() 
+                                 { 
+                                     Email = users.Email,
+                                     FirstName = users.FirstName,
+                                     LastName  = users.LastName,
+                                 })
+                                 .ToListAsync();
         }
     }
 }

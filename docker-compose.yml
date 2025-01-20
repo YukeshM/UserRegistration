@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Yukesh@410"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Services/DatabaseService/Dockerfile
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=UserManagementDb;User Id=sa;Password=Yukesh@410;TrustServerCertificate=True;"
+    ports:
+      - "8089:8080"
+    depends_on:
+      - sqlserver
+    networks:
+      - app-network
+
+  api2:
+    build:
+      context: .
+      dockerfile: Services/UserRegistrationService/Dockerfile
+    environment:
+      DBUrl: "http://api:8080"  # URL of the first API
+      FolderPath: "D:\\AssignmentUploads"
+    ports:
+      - "8090:8080"
+    depends_on:
+      - sqlserver
+      # - api
+    networks:
+      - app-network
+    
+  # angular-app:
+  #   build:
+  #     context: .
+  #     dockerfile: Web/UserRegistration/Dockerfile
+  #   ports:
+  #     - "4200:8080"  # Map port 8080 in the container to port 4200 on the host
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge

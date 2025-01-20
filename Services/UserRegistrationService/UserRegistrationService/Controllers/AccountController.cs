@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using UserRegistrationService.Core.Contracts.Services;
 using UserRegistrationService.Core.Models.InputModels;
 using UserRegistrationService.Core.Models.ResponseModels;
@@ -46,10 +47,24 @@ namespace UserRegistrationService.Api.Controllers
             return ServiceResponse<LoginResponse>.SuccessResponse(response, "Log in success");
         }
 
-        [HttpGet]
+
+        /// <summary>
+        /// Retrieves all users from the database.
+        /// </summary>
+        /// <returns>A list of all users.</returns>
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("GetAllUsers")]
+        public async Task<List<UserResponse>> GetAllUsersAsync()
+        {
+            return await accountService.GetUsers();
+        }
+
+
+        [HttpGet("TestApi")]
         public ActionResult TestApi()
         {
-            return Ok("Api request success");
+            return Ok("User registration service Api request success");
         }
 
     }

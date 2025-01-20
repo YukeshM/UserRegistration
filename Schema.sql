@@ -1,4 +1,8 @@
 CREATE DATABASE UserManagementDb;
+GO
+
+USE UserManagementDb
+
 
 GO
 CREATE TABLE [dbo].[Gender](
@@ -211,94 +215,14 @@ GO
 ALTER TABLE [dbo].[UserToken] CHECK CONSTRAINT [FK_UserToken]
 GO
 
-
--- =============================================
--- Author          : Yukesh M
--- Created Date    : 14-01-2025
--- Description     : Function to return the gender.
--- 
--- Input Parameters:
---      
---
--- Output:
---      Returns a table containing gender.
--- 
--- Notes:
---      
---
--- Modification History:
--- =============================================
--- Altered By      Date            Description
--- -----------     ------------    ------------
--- 
--- =============================================
-
-CREATE OR ALTER PROCEDURE [dbo].[uspGetGender]
-AS
-BEGIN
-	SELECT 
-		G.Id AS GenderId,
-		G.[Name] GenderName
-	FROM
-	Gender G
-END;
+--Admin data with access
+INSERT [dbo].[User] ([Id], [FirstName], [LastName], [Age], [GenderId], [RegistrationDate], [Email], [PasswordHash], [NormalizedUserName], [NormalizedEmail], [EmailConfirmed], 
+[SecurityStamp], [ConcurrencyStamp], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount], [PhoneNumber]) 
+VALUES (N'a7d99fad-2f08-431c-f936-08dd39045109', N'Admin', N'test', NULL, NULL, CAST(N'2025-01-19T18:30:00.000' AS DateTime),
+N'Admin@gmail.com', N'AQAAAAIAAYagAAAAEFVBMbVnYdKEydS4wa+ATg5CsipFDyqS4DXahdFD6T6v2dj078XcgZ3XcSX8o7fAMw==', N'ADMIN', N'ADMIN@GMAIL.COM', 0, 
+N'2QROJJ5BD3PEQU4G7TGCQSZO7NJ5L2BT', N'da6d4e39-7584-429a-938e-45a855613c94', 0, 0, NULL, 1, 0, NULL);
 GO
 
-
--- =============================================
--- Author          : Yukesh M
--- Created Date    : 14-01-2025
--- Description     : Function to return the document for a user based on document Id.
--- 
--- Input Parameters:
---      @DocumentId (INT) - The ID of the document.
---
--- Output:
---      Returns a table containing  documents with columns such as DocumentId, OriginalFileName, FileName.
--- 
--- Notes:
---
---
--- Modification History:
--- =============================================
--- Altered By      Date            Description
--- -----------     ------------    ------------
--- 
--- =============================================
-
-CREATE OR ALTER PROCEDURE [dbo].[uspGetDocumentById]
-(
-    @DocumentId INT,
-    @UserId UNIQUEIDENTIFIER
-)
-AS
-BEGIN
-    BEGIN TRY
-        -- Check if the user exists
-        IF NOT EXISTS (SELECT 1 FROM [User] U WHERE U.Id = @UserId)
-        BEGIN
-            -- Raise error if user is not found
-            THROW 50001, 'The specified user does not exist in the User table.', 1;
-        END
-
-        -- Retrieve document details
-        SELECT 
-            D.Id AS DocumentId,
-            D.[FileName],
-            D.OriginalFileName
-        FROM 
-            [Document] D
-        WHERE 
-            D.Id = @DocumentId;
-    END TRY
-    BEGIN CATCH
-        -- Handle any errors
-        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
-        DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
-        DECLARE @ErrorState INT = ERROR_STATE();
-
-        -- Re-throw the error with the original error details
-        RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
-    END CATCH
-END;
+INSERT INTO UserRole(UserId, RoleId)
+VALUES( 'a7d99fad-2f08-431c-f936-08dd39045109', '4BDA03EB-50D8-4B65-B7C6-1C474BB8BAB2');
 GO
