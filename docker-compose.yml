@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: yukesh410/sqlserver:latest
     environment:
       SA_PASSWORD: "Yukesh@410"
       ACCEPT_EULA: "Y"
@@ -12,9 +12,7 @@ services:
       - app-network
 
   api:
-    build:
-      context: .
-      dockerfile: Services/DatabaseService/Dockerfile
+    image: yukesh410/api:latest
     environment:
       ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=UserManagementDb;User Id=sa;Password=Yukesh@410;TrustServerCertificate=True;"
     ports:
@@ -25,9 +23,7 @@ services:
       - app-network
 
   api2:
-    build:
-      context: .
-      dockerfile: Services/UserRegistrationService/Dockerfile
+    image: yukesh410/api2:latest
     environment:
       DBUrl: "http://api:8080"  # URL of the first API
       FolderPath: "D:\\AssignmentUploads"
