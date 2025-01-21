@@ -1,48 +1,33 @@
-# # Stage 1: Build the Angular application
-# FROM node:latest AS build
-# WORKDIR /app
+# FROM node:alpine
+
 # COPY package*.json ./
+# WORKDIR /app
+# # COPY . /app
+
+# RUN npm install -g @angular/cli
+
 # RUN npm install
-# COPY . .
-# RUN npm run build --prod
+# EXPOSE 4200
+# CMD ["ng", "serve", "--host", "0.0.0.0"]
 
-# # Stage 2: Serve the Angular application with Nginx
-# FROM nginx:alpine
-# COPY --from=build /app/dist/user-registration /usr/share/nginx/html
-# EXPOSE 8080
-# # CMD ["nginx", "-g", "daemon off;"]
+# Use the Node.js base image
+FROM node:22
 
-# Stage 1: Compile and Build angular codebase
+# Set the working directory in the container
+WORKDIR /app
 
-
-### STAGE 1: Build ###
-FROM node:lts-alpine AS build
-
-#### make the 'app' folder the current working directory
-WORKDIR /usr/src/app
-
-#### copy both 'package.json' and 'package-lock.json' (if available)
+# Copy package.json and package-lock.json
 COPY package*.json ./
+COPY decorate-angular-cli.js ./
 
-#### install angular cli
-RUN npm install -g @angular/cli
-
-#### install project dependencies
+# Install dependencies
 RUN npm install
 
-#### copy things
+# Copy the entire Angular app source code to the container
 COPY . .
 
-#### generate build --prod
-RUN npm run build --prod
+# Expose the default Angular development server port
+EXPOSE 4200
 
-### STAGE 2: Run ###
-FROM nginxinc/nginx-unprivileged
-
-#### copy nginx conf
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-#### copy artifact build from the 'build environment'
-COPY --from=build /usr/src/app/dist/user-registration /usr/share/nginx/html
-
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Angular app with ng serve
+CMD ["npm", "run", "start"]
