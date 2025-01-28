@@ -18,7 +18,7 @@ namespace UserRegistrationService.Core.Validator
         {
             RuleFor(x => x.Username)
                 .NotEmpty().WithMessage("Username is required")
-                .Length(3, 50).WithMessage("Username must be between 4 and 20 characters")
+                .Length(3, 50).WithMessage("Username must be between 3 and 50 characters")
                 .Matches("^[a-zA-Z0-9]*$").WithMessage("Username can only contain letters and numbers");
 
             RuleFor(x => x.Password)
